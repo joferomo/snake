@@ -147,6 +147,11 @@ int main()
 	GLFWwindow* window = glfwCreateWindow(16*21, 16*21, "Snake", NULL, NULL);
 	glfwMakeContextCurrent(window);
 
+	const GLFWvidmode* screen = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	int windowWidth, windowHeight;
+	glfwGetWindowSize(window, &windowWidth, &windowHeight);
+	glfwSetWindowPos(window, (screen->width - windowWidth) / 2, (screen->height - windowHeight) / 2);
+
 	gladLoaderLoadGL();
 
 	unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
